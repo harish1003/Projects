@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('SCM') {
+        stage('SCM2') {
             steps {
                 git branch: 'mainBranch', 
                 credentialsId: '34015328-85c2-4c0b-8cdd-67e08cd9d8f0', 
                 url: 'https://github.com/harish1003/Projects.git'
             }
-        }a
+        }
         stage('clean'){
             steps{
             echo " mvn clean running"
