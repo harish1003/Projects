@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM') {
+            steps {
+                git branch: 'mainBranch', 
+                credentialsId: '34015328-85c2-4c0b-8cdd-67e08cd9d8f0', 
+                url: 'https://github.com/harish1003/Projects.git'
+            }
+        }a
+        stage('clean'){
+            steps{
+            echo " mvn clean running"
+            sh "mvn clean"
+            echo "mvn clean job done"
+            }
+        }
+         stage('install'){
+             steps{
+            echo " mvn install running"
+            sh "mvn install"
+            echo "mvn install job done"
+             }
+        }
+         stage('package'){
+             steps{
+            echo " mvn package running"
+            sh "mvn package"
+            echo "mvn package job done"
+         }
+        }
+         stage('test'){
+             steps{
+            echo " mvn test running"
+            sh "mvn test"
+            echo "mvn test job done"
+             }
+        }     
+    }
+}
+
+/* in jenkins job you have to configure the git url and credentials, so that it can read this file and execute the stages */
